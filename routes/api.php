@@ -17,7 +17,8 @@ use App\Http\Controllers\Admin\UserController;
 
 Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
 
-Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
+Route::middleware('auth:sanctum')->prefix('admin')->as('admin.')->group(function () {
     Route::apiResource('users', UserController::class);
 });
+
 
