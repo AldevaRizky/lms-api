@@ -28,7 +28,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('auth/{userid}', [AuthController::class, 'logout']);
 });
 
-Route::middleware('auth:sanctum')->prefix('admin')->as('admin.')->group(function () {
+Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->as('admin.')->group(function () {
     Route::apiResource('users', UserController::class);
     Route::apiResource('divisions', DivisionController::class);
     Route::apiResource('leave-types', LeaveTypeController::class);
