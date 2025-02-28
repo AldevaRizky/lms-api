@@ -12,12 +12,18 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    /**
+     * [Admin] Display a listing of the users.
+     */
     public function index()
     {
         $users = User::with('division')->get();
         return response()->json($users);
     }
 
+    /**
+     * [Admin] Store a newly created users.
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -56,12 +62,18 @@ class UserController extends Controller
         ], 201);
     }
 
+    /**
+     * [Admin] Display the specified users.
+     */
     public function show($id)
     {
         $user = User::with('division')->findOrFail($id);
         return response()->json($user);
     }
 
+    /**
+     * [Admin] Update the specified users.
+     */
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
@@ -92,6 +104,9 @@ class UserController extends Controller
         return response()->json($user);
     }
 
+    /**
+     * [Admin] Remove the specified users.
+     */
     public function destroy($id)
     {
         $user = User::findOrFail($id);
