@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\LeaveTypeController;
 use App\Http\Controllers\Admin\LeaveBalanceController;
 use App\Http\Controllers\Admin\LeaveRequestController;
 use App\Http\Controllers\Admin\CompanySettingController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,12 @@ use App\Http\Controllers\Admin\CompanySettingController;
 |
 */
 
-Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
+Route::post('auth/login', [AuthController::class, 'login']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::patch('auth/{userid}', [AuthController::class, 'update']);
+    Route::get('auth/{userid}', [AuthController::class, 'show']);
+    Route::delete('auth/{userid}', [AuthController::class, 'logout']);
+});
 
 Route::middleware('auth:sanctum')->prefix('admin')->as('admin.')->group(function () {
     Route::apiResource('users', UserController::class);
