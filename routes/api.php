@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\DivisionController;
 use App\Http\Controllers\Admin\LeaveTypeController;
 use App\Http\Controllers\Admin\LeaveBalanceController;
+use App\Http\Controllers\Admin\LeaveRequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::middleware('auth:sanctum')->prefix('admin')->as('admin.')->group(function
     Route::apiResource('divisions', DivisionController::class);
     Route::apiResource('leave-types', LeaveTypeController::class);
     Route::apiResource('leave-balances', LeaveBalanceController::class);
+    Route::apiResource('leave-requests', LeaveRequestController::class);
 });
 
 
