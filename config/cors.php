@@ -19,18 +19,6 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
-
-    'allowed_origins_patterns' => [],
-
-    'allowed_headers' => ['*'],
-
-    'exposed_headers' => [],
-
-    'max_age' => 0,
-
-    'supports_credentials' => false,
-
     'allowed_origins' => [
         'http://localhost:5173',
         'http://localhost:8000',
@@ -39,4 +27,13 @@ return [
         'http://api-lmsystem.euphemia.site',
     ],
 
+    'allowed_origins_patterns' => [],
+
+    'allowed_headers' => ['*'],
+
+    'exposed_headers' => ['Authorization', 'X-Custom-Header'],
+
+    'max_age' => 0,
+
+    'supports_credentials' => false,
 ];
